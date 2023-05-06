@@ -1,0 +1,33 @@
+import re
+
+def get_first_two_chars(string):
+    words = string.split()
+    result = []
+    for word in words:
+        if len(word) >= 2:
+            result.append(word[:2])
+        else:
+            result.append(word)
+    return result
+
+def get_words_with_digits(string):
+    pattern = r'\w*\d\w*'
+    return re.findall(pattern, string)
+
+def get_dates(string):
+    pattern = r'\d{4}-\d{2}-\d{2}'
+    return re.findall(pattern, string)
+
+my_str = 'This is test string X. 2022-02-18 We are learning to use RegEx. Hello, world!' \
+         '12321 11 1245 15 qwe123 2023-04-14'
+
+first_two_chars = get_first_two_chars(my_str)
+words_with_digits = get_words_with_digits(my_str)
+dates = get_dates(my_str)
+
+print("First two characters of each word:")
+print(first_two_chars)
+print("\nWords with at least one digit:")
+print(words_with_digits)
+print("\nDates in the string:")
+print(dates)
